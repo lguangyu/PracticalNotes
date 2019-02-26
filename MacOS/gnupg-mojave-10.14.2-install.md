@@ -7,7 +7,7 @@ On the other hand, also want to keep the direct dependencies
 
 ## Dependency tree
 
-![](misc/gnupg-mojave-10.14.2-install.dependency-tree.gv.png)
+![](auxiliary/gnupg-mojave-10.14.2-install.dependency-tree.gv.png)
 
 ## Basal libraries/tools
 
