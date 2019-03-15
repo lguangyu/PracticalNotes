@@ -1,3 +1,5 @@
 # misc
 .DS_Stor
 *.swp
+__pycache__/
+dev/
