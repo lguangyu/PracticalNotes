@@ -1,0 +1,56 @@
+[
+	{
+		"uid": "libopenblas",
+		"disp": "OpenBLAS"
+	},
+	{
+		"uid": "liblapack",
+		"disp": "LAPACK"
+	},
+	{
+		"uid": "libgtk",
+		"disp": "libgtk-3"
+	},
+	{
+		"uid": "ffmpeg",
+		"disp": "ffmpeg"
+	},
+	{
+		"uid": "libavcodec",
+		"disp": "libavcodec"
+	},
+	{
+		"uid": "libavformat",
+		"disp": "libavformat"
+	},
+	{
+		"uid": "libswscale",
+		"disp": "libswscale"
+	},
+	{
+		"uid": "libtbb",
+		"disp": "libtbb"
+	},
+	{
+		"uid": "libjpeg",
+		"disp": "libjpeg"
+	},
+	{
+		"uid": "libpng",
+		"disp": "libpng"
+	},
+	{
+		"uid": "libtiff",
+		"disp": "libtiff"
+	},
+	{
+		"uid": "libjasper",
+		"disp": "libjasper"
+	},
+	{
+		"uid": "opencv",
+		"disp": "OpenCV 4.1.0",
+		"source": true,
+		"dep": ["libopenblas", "liblapack", "libgtk", "ffmpeg", "libavcodec", "libavformat", "libswscale", "libtbb", "libjpeg", "libpng", "libtiff", "libjasper"]
+	}
+]

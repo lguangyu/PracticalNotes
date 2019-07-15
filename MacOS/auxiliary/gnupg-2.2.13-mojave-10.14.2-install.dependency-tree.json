@@ -1,0 +1,73 @@
+[
+	{
+		"uid": "libiconv",
+		"disp": "libiconv 1.15"
+	},
+	{
+		"uid": "readline",
+		"disp": "readline 7.0.3_1"
+	},
+	{
+		"uid": "npth",
+		"disp": "npth 1.6"
+	},
+	{
+		"uid": "zlib",
+		"disp": "zlib 1.2.11"
+	},
+	{
+		"uid": "bzip2",
+		"disp": "bzip2 1.0.6_1"
+	},
+	{
+		"uid": "qt5",
+		"disp": "Qt5 5.12.1"
+	},
+	{
+		"uid": "ncurses",
+		"disp": "ncurses 6.1"
+	},
+	{
+		"uid": "libgpg-error",
+		"disp": "libgpg-error 1.35",
+		"source": true,
+		"dep": ["libiconv", "readline"]
+	},
+	{
+		"uid": "libassuan",
+		"disp": "libassuan 2.5.3",
+		"source": true,
+		"dep": ["libgpg-error"]
+	},
+	{
+		"uid": "libgcrypt",
+		"disp": "libgcrypt 1.8.4",
+		"source": true,
+		"dep": ["npth"]
+	},
+	{
+		"uid": "ntbtls",
+		"disp": "ntbtls 0.1.2",
+		"source": true,
+		"dep": ["libgpg-error", "libgcrypt", "libksba", "zlib"]
+	},
+	{
+		"uid": "libksba",
+		"disp": "libksba 1.3.5",
+		"source": true,
+		"dep": ["libgpg-error"]
+	},
+	{
+		"uid": "pinentry",
+		"disp": "pinentry 1.1.0",
+		"source": true,
+		"dep": ["libgpg-error", "libassuan", "ncurses", "libiconv", "qt5"]
+	},
+	{
+		"uid": "gnupg",
+		"disp": "gnupg 2.2.13",
+		"source": true,
+		"dep": ["pinentry", "libgpg-error", "libgcrypt", "libassuan", "libksba",
+			"npth", "ntbtls", "libiconv", "zlib", "bzip2", "readline"]
+	}
+]

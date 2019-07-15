@@ -3,9 +3,7 @@ OpenCV 4.1.0 - Ubuntu (18.04)
 
 OpenCV version in Ubuntu's official repo is too old (3.2).
 
-<!--## Dependency tree
-
-![](auxiliary/gnupg-mojave-10.14.2-install.dependency-tree.gv.png)-->
+![](auxiliary/opencv-4.1.0-ubuntu-18.04-install.dependency-tree.gv.png)
 
 ## Online resources
 
@@ -44,7 +42,7 @@ vim opencv-4.1.0/cmake/OpenCVFindOpenBLAS.cmake
 # this is required if want to link to openblas
 ```
 
-2. Softlink `lapacke.h`
+2. Soft link `lapacke.h`
 
 `OpenCVFindLAPACK.cmake` always finds it in the same directory as `openblas` (if used); but in my case it is in a different location;
 
