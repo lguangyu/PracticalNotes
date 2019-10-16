@@ -7,10 +7,11 @@ Encountered error 'missing symbol `libiconv` during loading test.
 
 Install information:
 
-* R 3.5.3 and R 3.6.1 (confirmed)
+* `R` version 3.5.3 and 3.6.1 (confirmed)
 * `install.packages("tidyverse")`
 
-Actual reason no clear. `objdump` shows `haven.so` and `readxl.so` looks for `libiconv`, `libiconv_open` and `libiconv_close` symbols.
+Actual reason is not clear.
+`objdump` shows `haven.so` and `readxl.so` looks for `libiconv`, `libiconv_open` and `libiconv_close` symbols.
 These symbols not found in `libR.so`.
 
 ## Solution
@@ -31,13 +32,16 @@ cd haven
 R CMD INSTALL --build .
 ```
 
-This will lead an identical failure.
-Then enter `src` subdirectory, re-run the last linking `g++`/`gcc` invocation with additional flag `-liconv` at the end.
-Back to upper directory and run
+This will lead to an identical failure.
+Then enter `src` subdirectory, re-run the last linking `g++`/`gcc` invocation with an additional flag `-liconv` at the end.
+As of my configuration, it looks like this:
+```bash
+g++ -std=gnu++11 -shared -L/shared/centos7/r-project/3.6.1/lib64/R/lib -Wl,-rpath,/home/li.gua/.local/lib,-rpath,/shared/centos7/gcc/7.2.0/lib64 -o haven.so tagged_na.o readstat/readstat_parser.o readstat/readstat_metadata.o readstat/readstat_io_unistd.o readstat/readstat_bits.o readstat/readstat_variable.o readstat/readstat_writer.o readstat/readstat_error.o readstat/readstat_convert.o readstat/CKHashTable.o readstat/readstat_malloc.o readstat/readstat_value.o readstat/sas/readstat_xport_write.o readstat/sas/readstat_sas7bcat_read.o readstat/sas/readstat_sas7bdat_write.o readstat/sas/readstat_sas7bcat_write.o readstat/sas/ieee.o readstat/sas/readstat_xport_read.o readstat/sas/readstat_sas.o readstat/sas/readstat_sas_rle.o readstat/sas/readstat_xport.o readstat/sas/readstat_sas7bdat_read.o readstat/spss/readstat_sav_compress.o readstat/spss/readstat_spss_parse.o readstat/spss/readstat_sav_read.o readstat/spss/readstat_por_read.o readstat/spss/readstat_sav.o readstat/spss/readstat_por.o readstat/spss/readstat_sav_parse_timestamp.o readstat/spss/readstat_zsav_read.o readstat/spss/readstat_sav_write.o readstat/spss/readstat_zsav_compress.o readstat/spss/readstat_spss.o readstat/spss/readstat_por_write.o readstat/spss/readstat_zsav_write.o readstat/spss/readstat_sav_parse.o readstat/spss/readstat_por_parse.o readstat/stata/readstat_dta_read.o readstat/stata/readstat_dta.o readstat/stata/readstat_dta_parse_timestamp.o readstat/stata/readstat_dta_write.o DfReader.o DfWriter.o haven_types.o RcppExports.o -lz -L/shared/centos7/r-project/3.6.1/lib64/R/lib -lR -liconv
+```
+Then go back to upper directory and finish the installation and load test (should pass this time):
 ```bash
 R CMD INSTALL --install-test .
 ```
-to finish the installation and load test (should pass).
 
 Identical solution for `readxl`.
-After installation of these two packages, re-run `install.packages("tidyverse")`.
+Finally finish installing `tidyverse`.
