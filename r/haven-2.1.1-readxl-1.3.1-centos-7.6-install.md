@@ -3,16 +3,19 @@ haven 2.1.1 & readxl 1.3.1 - CentOS (7.6)
 
 ## Issue
 
-Encountered error 'missing symbol `libiconv` during loading test.
+Encountered error 'missing symbol `libiconv`' during loading test.
 
 Install information:
 
 * `R` version 3.5.3 and 3.6.1 (confirmed)
 * `install.packages("tidyverse")`
 
-Actual reason is not clear.
 `objdump` shows `haven.so` and `readxl.so` looks for `libiconv`, `libiconv_open` and `libiconv_close` symbols.
 These symbols not found in `libR.so`.
+Actual cause is not clear.
+Guesses:
+* `R` not configured to `libiconv`;
+* `libiconv` not in system/standard path, so its linker flag not configured to makefile;
 
 ## Solution
 
